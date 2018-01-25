@@ -14,6 +14,7 @@
     "express": "^4.16.2",
     "http": "0.0.0",
     "memory-cache": "^0.2.0",
+    "mongolab-data-api": "^1.1.6",
     "object-to-xml": "^1.1.0"
   }
 }
