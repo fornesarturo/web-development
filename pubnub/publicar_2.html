@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>PubNub</title>
+    <style>
+        .message-container {
+            padding-left: 10%;
+        }
+        .user {
+            color: green;
+            display: inline-block;
+        }
+        .message {
+            color: red;
+            display: inline-block;
+        }
+        .interlude {
+            display: inline-block;
+        }
+    </style>
+    <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.20.0.js"></script>
+    <script>
+        function conectar() {
+            pubnub = new PubNub({
+            //    publishKey: 'pub-c-c23fedb2-7872-47af-a3c8-40b2b0fb0518',
+               subscribeKey: 'sub-c-b636bd7e-0164-11e8-bd8f-6ec1080ef9b6'//, Miguel
+            // subscribeKey: 'sub-c-f2fc4886-0165-11e8-bd18-32931b190843' // Yo
+
+            });
+            //Crear instancia de PubNub
+            pubnub.addListener({
+                status: function (statusEvent) {
+                    if (statusEvent.category === "PNConnectedCategory") {
+                        console.log("conectado");
+                    }
+                },
+                message: function (message) {
+                    console.log("Mensaje de ", message.message.user, ": ", message.message.message);
+                    var received = document.createElement("div");
+                    received.className = "message-container";
+                    var receivedUser = document.createElement("div");
+                    receivedUser.className = "user";
+                    receivedUser.innerHTML = message.message.user + "&nbsp;";
+
+                    var receivedMessage = document.createElement("div");
+                    receivedMessage.className = "message";
+                    receivedMessage.innerHTML = message.message.message + "&nbsp;";
+                    
+                    var interlude = document.createElement("div");
+                    interlude.className = "interlude";
+                    interlude.innerHTML = " dijo: " +"&nbsp;";
+
+                    received.appendChild(receivedUser);
+                    received.appendChild(interlude);
+                    received.appendChild(receivedMessage);
+                    // document.getElementById("where").innerHTML += "Mensaje de " + message.message.user + ": " + message.message.message + "<br>";
+                    document.getElementById("where").appendChild(received);
+                }
+            });
+
+            pubnub.subscribe({
+                channels: ['canal_k']//,
+                // withPresence: true 
+            });
+        };
+    </script>
+</head>
+
+<body>
+    <button onclick="conectar();">Click me to subscribe!</button>
+    <!-- <button onclick="publicarMensaje();">Click me to send message!</button> -->
+    <div id="where"></div>
+</body>
+
+</html>

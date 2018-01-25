@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>PubNub</title>
+    <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.20.0.js"></script>
+    <script>
+        function conectar() {
+            pubnub = new PubNub({
+                publishKey: 'pub-c-c23fedb2-7872-47af-a3c8-40b2b0fb0518',
+                subscribeKey: 'sub-c-f2fc4886-0165-11e8-bd18-32931b190843',
+
+            });
+            //Crear instancia de PubNub
+            pubnub.addListener({
+                status: function(statusEvent) {
+                    if (statusEvent.category === "PNConnectedCategory") {
+                        console.log("conectado");
+                    
+                    }
+                },
+                message: function(message) {
+                    console.log("Mensaje", message.message);
+                }
+            });
+
+            pubnub.subscribe({
+                channels: ['canal_k']//,
+            // withPresence: true 
+            });
+        };
+
+        function publicarMensaje() {
+            var userMessage = {user: document.getElementById("username").value, message: document.getElementById("user-text").value};
+            var publishConfig = {
+                channel: "canal_k",
+                message: userMessage    
+            }
+            pubnub.publish(publishConfig, function(status, response){
+                console.log("From publicarMensaje!");
+                console.log(status, response);
+            });
+        }
+    </script>
+</head>
+<body>
+    <button onclick="conectar();">Click me to subscribe!</button>
+    <br>
+    <p>User name: </p><input type="text" id="username">
+    <p>Message: </p><input type="text" id="user-text">
+    <br>
+    <button onclick="publicarMensaje();">Click me to send message!</button>
+</body>
+</html>
