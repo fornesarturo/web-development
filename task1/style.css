@@ -1,0 +1,84 @@
+.title {
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: 500%;
+    background-color: rgb(85, 85, 85);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    margin: 0%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin-bottom: 2%;
+}
+
+body {
+    margin: 0%;
+}
+
+.photo {
+    border-radius: 50%;
+    display:block;
+    margin: 0 auto;
+}
+
+.name {
+    color: black ;
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: 300%;
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
+    top: 1%;
+}
+
+.block {
+    display: inline-block;
+}
+
+.question {
+    padding-top: 2%;
+    padding-bottom: 2%;
+    background-color: #3E3F40;
+}
+
+.ideas {
+    padding-top: 2%;
+    padding-bottom: 2%;
+    background-color: #015579;
+}
+
+.question-text {
+    color: white;
+    padding-left: 15%;
+    padding-right: 10%;
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: xx-large;
+}
+
+.answer {
+    padding-top: 2%;
+    padding-bottom: 2%;
+    background-color: beige;
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: 150%;
+}
+
+.answer-text {
+    color: black;
+    padding-left: 10%;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+li {
+  padding-left: 1.3em;
+}
+li:before {
+  content: "*";
+  font-family: "Lucida Console", Monaco, monospace;
+  display: inline-block;
+  margin-left: -1.3em; /* same as padding-left set on li */
+  margin-bottom: 1.5em;
+  width: 1.3em; /* same as padding-left set on li */
+}

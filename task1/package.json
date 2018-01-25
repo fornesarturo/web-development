@@ -1,0 +1,12 @@
+{
+    "name": "task1-web",
+    "description": "Task 1",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "dependencies": {
+        "mongodb": "^2.1.6",
+        "mongolab-data-api": "^1.1.6"
+    }
+}
